@@ -9568,6 +9568,11 @@ h6,
 }
 
 .page-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/CONTATO.png), no-repeat center center;
+  background-size: cover;
+}
+
+#Humor {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/Humor.png), no-repeat center center;
   background-size: cover;
 }
