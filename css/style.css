@@ -6171,43 +6171,49 @@ button.bg-dark:hover,
 button.bg-dark:focus {
   background-color: #080808 !important;
 }
+#azul{
+  border-color: var(--blue);
+}
+fa fa-2x fa-route mx-auto mb-4::before{
+  color: var(--blue);
+}
 
 #red{
   background-color: red;
   padding: 0%;
-  margin: 8;
+  
 }
 
 #orange{
   background-color: orangered;
   padding: 0%;
-  margin: 8;
+ 
 }
 
 #yellow{
   background-color: orange;
   padding: 0%;
-  margin: 8;
+  
 }
 
 #blue{
   background-color: var(--blue);
   padding: 0%;
-  margin: 8;
+  
   
 }
 
 #marine{
   background-color: blue;
   padding: 0%;
-  margin: 8;
+  
   
 }
 
 #gray{
   background-color: gray;
   padding: 0%;
-  margin: 8;
+  
   
 }
 
