@@ -9819,8 +9819,14 @@ h6,
   list-style-type: none;
 }
 main.cards {
+  
   display: flex;
-  padding: 32px;
+    padding: 12px;
+    margin-top: 0%;
+    align-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
 main.cards section.card {
