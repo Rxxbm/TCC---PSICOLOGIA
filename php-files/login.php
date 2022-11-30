@@ -12,7 +12,7 @@ session_start();
         $resultado = $connect->query($sql);
 
         if(mysqli_num_rows($resultado) < 1){
-            header("Location: login.php");
+            header("Location: Telalogin.php");
 
             print_r($resultado);
         }else{
