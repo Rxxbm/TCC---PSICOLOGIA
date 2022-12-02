@@ -9,6 +9,7 @@
     $sql = "INSERT INTO datas(data_disponibilizada, data_disponibilizacao) values ('$data', '$agora')";
     if ($connect->query($sql) === TRUE) {
       $id = $connect->insert_id;
+        header("Location: pghenrique.php");
           echo "Nova inserção realizada com sucesso. Ultimo id inserido é: " . $id;
         } else {
           echo "Error: " . $sql . "<br>" . $connect->error;

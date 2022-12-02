@@ -3,11 +3,16 @@
     if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
-        header('Location: cadastro.php');
+        header('Location: Telalogin.php');
     }
     $logado = $_SESSION['email'];
 
     $horarios = [date("2022-12-06 14:30:00")];
+    if(isset($_GET['sair'])){
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: Telalogin.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,14 +56,10 @@ label {
                     </button>
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Início</a>
-                            <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Conecte-se</a>
-                                <div class="dropdown-menu border-0 rounded-0 m-0">
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contato</a>
+                            <a href="index.html" class="nav-item nav-link">Retornar ao Início</a>
+                            
+                        </div>
+                        <a href="pghenrique.php?sair=true" class='nav-item nav-link' style="color:red;">Sair</a>
                         </div>
                     </div>
                 </nav>
