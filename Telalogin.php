@@ -33,27 +33,26 @@
                 <h1 class="text-center text-dark-50" style="font-size: 4rem;">Login</h1>
                 <p style="text-align: center;">Faça seu login e acesse o sistema.</p>
             </div>
-            <form action="login.php" method="POST">
-                
-                <div class="container d-flex flex-column justify-content-center">
+            <div class="container d-flex flex-column justify-content-center">
+                <form action="login.php" method="POST">
                     <div class="text-center">
-                        <input type="text" placeholder="Email:" name="email" class="form-control mx-auto" style="width: 40%;">
+                        <input type="text" placeholder="Email:" class="form-control mx-auto" style="width: 40%;" name="email">
                     </div>
                     <div class="justify-content-center my-1 text-center">
-                        <input type="password" placeholder="Senha:" name="senha" class="form-control mx-auto" style="width: 40%;">
+                        <input type="password" placeholder="Senha:" class="form-control mx-auto" style="width: 40%;" name="senha">
                         <span class="help-block">Esqueceu a senha?</span>
                     </div>
                     <div class="text-center">
-                        <input type="submit" name="submit" value="enviar">
+                        <input type="submit" name="submit">
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         <div class="container p-0 d-flex flex-column justify-content-center align-items-center my-lg-5">
             
             <div class="p-3 text-center">
                 <h2>Não possui uma conta?</h2>
-                <p><strong><a href="cadastro.html" style="color: #656565;">Clique aqui</a></strong> e realize um cadastro.</p>
+                <p><strong><a href="cadastro.php" style="color: #656565;">Clique aqui</a></strong> e realize um cadastro.</p>
             </div>
 
         </div>

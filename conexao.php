@@ -1,6 +1,6 @@
 <?php
 $hostname = "localhost";
-$bancodedados = "ifrj";
+$bancodedados = "psicologiaifrj";
 $usuario = "root";
 $senha = "";
 

@@ -5,9 +5,9 @@ session_start();
 
         include_once('conexao.php');
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha = md5($_POST['senha']);
 
-        $sql = "SELECT * FROM tabela1 WHERE email = '$email' and senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
 
         $resultado = $connect->query($sql);
 
