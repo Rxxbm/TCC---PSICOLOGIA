@@ -1,6 +1,5 @@
 <?php
     session_start();
-    print_r($_SESSION);
     if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
@@ -19,26 +18,24 @@
     <title>Página do Psicólogo</title>
     <link href="css/style.css" rel="stylesheet">
     <style>
-        [type="date"] {
-        background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-        }
-        [type="date"]::-webkit-inner-spin-button {
-        display: none;
-        }
-        [type="date"]::-webkit-calendar-picker-indicator {
-        opacity: 0;
-        }
-                label {
-        display: block;
-        }
-            input {
-            border: 1px solid #c4c4c4;
-            border-radius: 5px;
-            background-color: #fff;
-            padding: 3px 5px;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
-            width: 190px;
-            }
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+body {
+ 
+}
+label {
+  display: block;
+}
+
     </style>
 </head>
 <body>
@@ -67,7 +64,7 @@
                 </nav>
             </div>
         </div>
-        <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+        <div class="container-fluid bg-registration py-5" style="  padding: 4em; font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
@@ -90,25 +87,17 @@
                         <div class="card-body rounded-bottom bg-white p-5">
                             <form action="calendario.php" method="POST">
                                 <div class="form-group">
-                                    <label for="dateofbirth">Entre com uma data a ser reservado.</label>
-                                    <input type="date" name="dateofbirth" id="dateofbirth" class="form-control p-4">
+                                    <label for="dateofbirth">Escolha uma data a ser reservada aos alunos.</label>
+                                    <input type="date" name="data-sel" id="dateofbirth" class="form-control p-4">
                                 </div>
                                 <div class="form-group">
-                                    <label for="hora-cons">Escolha o horário da consulta: </label>
+                                    <label for="hora-cons">Escolha um horário a ser reservado aos alunos: </label>
                                     <input id="hora-cons" type="time" name="hora-cons" step="2" class="form-control p-4">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="">Visualizar Horários Cadastrados</label>
-                                    <select class="custom-select px-4" style="height: 47px;" name="horarios">
-                                        <option selected>Horários Cadastrados</option>
-                                        <?php foreach ($horarios as $h) { ?>
-                                            <option value="<?= $h;?>"> <?= $h; ?> </option>
-                                        <?php }?>
-                                    </select>
-                                </div>
+                               
                                 <div>
-                                    <button class="btn btn-primary btn-block py-3" type="submit">Enviar</button>
+                                    <button class="btn btn-primary btn-block py-3" type="submit" name="submit">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -118,6 +107,5 @@
         </div>
     </div>
         <!-- Corpo da página -->
-        
 </body>
 </html>
