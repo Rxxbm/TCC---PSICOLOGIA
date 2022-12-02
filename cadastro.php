@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])){
 
     // print_r($_POST['nome']);
     // print_r($_POST['email']);
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     
     if ($connect->query($result) === TRUE) {
         $id = $connect->insert_id;
-        echo "New record created successfully. Last inserted ID is: " . $id;
+        echo "Nova inserção realizada com sucesso. Ultimo id inserido é: " . $id;
       } else {
         echo "Error: " . $sql . "<br>" . $connect->error;
       }
