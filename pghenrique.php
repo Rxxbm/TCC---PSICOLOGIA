@@ -7,6 +7,8 @@
         header('Location: cadastro.php');
     }
     $logado = $_SESSION['email'];
+
+    $horarios = [date("2022-12-06 14:30:00")];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -86,7 +88,7 @@
                             <h1 class="text-white text-center m-0">Cadastrar</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-white p-5">
-                            <form>
+                            <form action="calendario.php" method="POST">
                                 <div class="form-group">
                                     <label for="dateofbirth">Entre com uma data a ser reservado.</label>
                                     <input type="date" name="dateofbirth" id="dateofbirth" class="form-control p-4">
@@ -98,32 +100,11 @@
 
                                 <div class="form-group">
                                     <label for="">Visualizar Horários Cadastrados</label>
-                                    <select class="custom-select px-4" style="height: 47px;">
+                                    <select class="custom-select px-4" style="height: 47px;" name="horarios">
                                         <option selected>Horários Cadastrados</option>
-                                        <option value="1">MAM 111</option>
-                                        <option value="2">MAM 121</option>
-                                        <option value="3">MAM 131</option>
-                                        <option value="4">MAM 141</option>
-                                        <option value="5">MAM 151</option>
-                                        <option value="6">MAM 161</option>
-                                        <option value="7">INF 211</option>
-                                        <option value="8">INF 221</option>
-                                        <option value="9">INF 222</option>
-                                        <option value="10">INF 231</option>
-                                        <option value="11">INF 241</option>
-                                        <option value="12">INF 251</option>
-                                        <option value="13">INF 261</option>
-                                        <option value="14">INF 141</option>
-                                        <option value="15">MAB 311</option>
-                                        <option value="16">MAB 321</option>
-                                        <option value="17">MAB 331</option>
-                                        <option value="18">MAB 341</option>
-                                        <option value="19">TRC 311</option>
-                                        <option value="20">TRC 321</option>
-                                        <option value="21">TRC 331</option>
-                                        <option value="22">TRC 341</option>
-                                        <option value="23">TRC 351</option>
-                                        <option value="24">TRC 361</option>
+                                        <?php foreach ($horarios as $h) { ?>
+                                            <option value="<?= $h;?>"> <?= $h; ?> </option>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <div>
