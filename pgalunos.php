@@ -1,6 +1,6 @@
 <?php
     session_start();
-   // print_r($_SESSION);
+   include_once('conexao.php');
     if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
@@ -12,6 +12,9 @@
         unset($_SESSION['senha']);
         header('Location: Telalogin.php');
     }
+    
+    $result_events = "SELECT id, data_disponibilizada FROM datas";
+    $resultado_events = mysqli_query($connect, $result_events);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,8 +38,50 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href='css/fullcalendar.min.css' rel='stylesheet' />
+    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <!-- <link href='css/personalizado.css' rel='stylesheet' /> -->
+    <script src='js/moment.min.js'></script>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/fullcalendar.min.js'></script>
+    <script src='locale/pt-br.js'></script>
+    <style>
+        .fc-day-number{
+            color: black;
+        }
+    </style>
+    <script>
+			$(document).ready(function() {
+				$('#calendar').fullCalendar({
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
+					defaultDate: Date(),
+					navLinks: true, // can click day/week names to navigate views
+					editable: true,
+					eventLimit: true, // allow "more" link when too many events
+					events: [
+						<?php
+							while($row_events = mysqli_fetch_array($resultado_events)){
+								?>
+								{
+								id: '<?php echo $row_events['id']; ?>',
+								title: '<?php echo "Horário Disponível"; ?>',
+								start: '<?php echo $row_events['data_disponibilizada']; ?>',
+								end: '<?php echo $row_events['data_disponibilizada']; ?>',
+								color: '<?php echo "#007bff"; ?>',
+								},<?php
+							}
+						?>
+					]
+				});
+			});
+	</script>
 </head>
-<body>       <div class="container-fluid position-relative nav-bar p-0">
+<body>       
+    <div class="container-fluid position-relative nav-bar p-0">
             <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                     <a href="" class="navbar-brand">
@@ -51,20 +96,18 @@
                             
                         </div>
                         <a href="pgalunos.php?sair=true" class='nav-item nav-link' style="color:red;">Sair</a>
-                        </div>
                     </div>
+                    
                 </nav>
             </div>
-        </div>
-        
-        <div class="container-fluid py-5">
-
+    </div>
 <div class="container py-5">
     <div class="text-center mb-3 pb-3">
-        <h1> CALENDÁRIO</h1>
         <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">TODAS AS INFORMAÇÕES COLOCADAS FICARÂO RESTRITAS À VISUALIZAÇÃO DO PSICÓLOGO.</h6>
         <h2>HORÁRIOS DISPONÍVEIS AQUI!</h2>
     </div>
+</div>
+<div id='calendar' style="max-width: 50%; margin: auto; margin-top: -30px;"></div>
 
 <!--     
     <div class="row justify-content-center">
