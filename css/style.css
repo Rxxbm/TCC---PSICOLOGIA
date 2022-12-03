@@ -6171,12 +6171,11 @@ button.bg-dark:hover,
 button.bg-dark:focus {
   background-color: #080808 !important;
 }
-#azul{
-  border-color: var(--blue);
-}
+
 fa fa-2x fa-route mx-auto mb-4::before{
   color: var(--blue);
 }
+
 
 #red{
   background-color: red;
@@ -9618,10 +9617,36 @@ h6,
   background-size: cover;
 }
 
-#Humor {
+#Humor  {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/Humor.png), no-repeat center center;
   background-size: cover;
 }
+
+#ansioso{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/Ans.png), no-repeat center center;
+  background-size: cover;
+}
+#nervoso{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/nerv.png), no-repeat center center;
+  background-size: cover;
+}
+#triste{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/trist.png), no-repeat center center;
+  background-size: cover;
+}
+#sozinho{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/sozi.png), no-repeat center center;
+  background-size: cover;
+}
+#infadd{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/infadd.png), no-repeat center center;
+  background-size: cover;
+}
+
+
+
+
+
 
 .destination-item img {
   transition: .5s;
