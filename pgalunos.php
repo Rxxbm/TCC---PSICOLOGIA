@@ -13,7 +13,7 @@
         header('Location: Telalogin.php');
     }
     
-    $result_events = "SELECT id, data_disponibilizada FROM datas";
+    $result_events = "SELECT id, data_disponibilizada, cor, mensagem FROM datas";
     $resultado_events = mysqli_query($connect, $result_events);
 ?>
 <!DOCTYPE html>
@@ -36,10 +36,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link href='css/fullcalendar.min.css' rel='stylesheet' />
-    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print'/>
     <!-- <link href='css/personalizado.css' rel='stylesheet' /> -->
     <script src='js/moment.min.js'></script>
     <script src='js/jquery.min.js'></script>
@@ -49,15 +51,27 @@
         .fc-day-number{
             color: black;
         }
+        .fc-event{
+           cursor: pointer;
+        }
     </style>
     <script>
 			$(document).ready(function() {
 				$('#calendar').fullCalendar({
+                    eventStartEditable: false,
+					eventDurationEditable: false,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
 						right: 'month,agendaWeek,agendaDay'
 					},
+                    eventClick: function(events){
+                        $('#visualizar').modal('show');
+                        $('#visualizar #title').text(events.title);
+                        $('#visualizar #start').text(events.start.format('DD/MM/YYYY HH:mm:ss'));
+                        $('#visualizar #id').val(events.id);
+                            return false;
+                    },
 					defaultDate: Date(),
 					navLinks: true, // can click day/week names to navigate views
 					editable: true,
@@ -68,19 +82,47 @@
 								?>
 								{
 								id: '<?php echo $row_events['id']; ?>',
-								title: '<?php echo "Horário Disponível"; ?>',
+								title: '<?php echo $row_events['mensagem'];?>',
 								start: '<?php echo $row_events['data_disponibilizada']; ?>',
 								end: '<?php echo $row_events['data_disponibilizada']; ?>',
-								color: '<?php echo "#007bff"; ?>',
+								color: '<?php echo $row_events['cor']; ?>',
 								},<?php
 							}
 						?>
-					]
+					],
+                selectable: true,
+                selectHelper: true,
 				});
 			});
 	</script>
 </head>
-<body>       
+<body>   
+    
+<div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalhes do Evento</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form action="marcar.php" method="POST">
+                        
+                            <dl class="row">
+                                <dt class="col-sm-3">Situação:</dt>
+                                <dd class="col-sm-9" id="title"></dd>
+                                <dt class="col-sm-3">Horário da Consulta:</dt>
+                                <dd class="col-sm-9" id="start"></dd>
+                                <input type="hidden" name="id" id="id">
+                            </dl>
+                            <button class="btn btn-warning" id="marcar" name="submit">Marcar Consulta</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+    </div>    
     <div class="container-fluid position-relative nav-bar p-0">
             <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">

@@ -21,19 +21,6 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
       } else {
         echo "Error: " . $sql . "<br>" . $connect->error;
       }
-    $md5 = md5($id);
-
-    $assunto = "Confirme seu cadastro no site de Apoio Psicológico do Campus Arraial do Cabo!";
-    $link = "localhost:8080/aula01/confirma.php?h=". $md5;
-
-    $mensagem = "Clique aqui para confirmar o seu cadastro! ". $link;
-    $header = "From: Rubem Corrêa";
-    echo $email;
-    if(mail($email, $assunto, $mensagem, $header)){
-      echo "Email enviado para ". $email;  
-    }else{
-        echo "Falha ao enviar";
-    }
 }
 ?>
 
