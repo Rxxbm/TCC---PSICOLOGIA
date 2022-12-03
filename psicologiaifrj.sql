@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2022 às 16:23
+-- Tempo de geração: 03-Dez-2022 às 23:24
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 7.4.30
 
@@ -28,24 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `datas` (
-  `data_disponivel` tinyint(1) NOT NULL,
+  `data_disponivel` tinyint(1) NOT NULL DEFAULT 1,
   `id` int(11) NOT NULL,
   `data_disponibilizada` datetime NOT NULL,
-  `data_disponibilizacao` datetime NOT NULL
+  `data_disponibilizacao` datetime NOT NULL,
+  `cor` varchar(20) DEFAULT '#007bff',
+  `mensagem` varchar(30) DEFAULT 'Horario Disponível'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `datas`
 --
 
-INSERT INTO `datas` (`data_disponivel`, `id`, `data_disponibilizada`, `data_disponibilizacao`) VALUES
-(0, 1, '2022-12-02 18:46:21', '0000-00-00 00:00:00'),
-(0, 2, '2022-12-06 14:30:00', '0000-00-00 00:00:00'),
-(0, 3, '2022-12-02 19:17:50', '0000-00-00 00:00:00'),
-(0, 4, '2022-12-14 21:38:36', '0000-00-00 00:00:00'),
-(0, 5, '2022-12-02 19:17:50', '2022-12-02 17:49:35'),
-(0, 6, '2022-12-07 17:00:00', '2022-12-02 18:04:45'),
-(0, 7, '2022-12-28 18:51:48', '2022-12-02 18:51:50');
+INSERT INTO `datas` (`data_disponivel`, `id`, `data_disponibilizada`, `data_disponibilizacao`, `cor`, `mensagem`) VALUES
+(0, 13, '2022-12-10 12:00:00', '2022-12-03 18:17:55', 'gray', 'Horario Ocupado'),
+(0, 14, '2022-12-18 17:00:00', '2022-12-03 18:18:09', 'gray', 'Horario Ocupado');
 
 -- --------------------------------------------------------
 
@@ -94,7 +91,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
