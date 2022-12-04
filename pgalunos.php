@@ -7,12 +7,21 @@
         header('Location: Telalogin.php');
     }
     $logado = $_SESSION['email'];
+    $senha = $_SESSION['senha'];
     if(isset($_GET['sair'])){
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
         header('Location: Telalogin.php');
-    }
-    
+    } 
+    $sql = "SELECT id FROM usuarios WHERE email = '$logado' and senha = '$senha'";
+        
+        $resultado = $connect->query($sql);
+        $row = $resultado->fetch_assoc();
+        if(mysqli_num_rows($resultado) < 1){
+            print_r($resultado);
+        }else{
+            $id_aluno = ($row['id']);
+        }
     $result_events = "SELECT id, data_disponibilizada, cor, mensagem FROM datas";
     $resultado_events = mysqli_query($connect, $result_events);
 ?>
@@ -66,10 +75,14 @@
 						right: 'month,agendaWeek,agendaDay'
 					},
                     eventClick: function(events){
-                        $('#visualizar').modal('show');
+                        if(events.color !== "gray"){
+                            $('#visualizar').modal('show');
+                        }
+                        
                         $('#visualizar #title').text(events.title);
                         $('#visualizar #start').text(events.start.format('DD/MM/YYYY HH:mm:ss'));
                         $('#visualizar #id').val(events.id);
+                        $('#visualizar #id_aluno').val(<?php echo $id_aluno;?>);
                             return false;
                     },
 					defaultDate: Date(),
@@ -116,7 +129,10 @@
                                 <dt class="col-sm-3">Horário da Consulta:</dt>
                                 <dd class="col-sm-9" id="start"></dd>
                                 <input type="hidden" name="id" id="id">
+                                <input type="hidden" name="id_aluno" id="id_aluno">
                             </dl>
+                            <label for="msg_aluno">Digite uma mensagem para o Psicólogo:</label>
+                            <textarea name="msg_alunos" id="msg_alunos" cols="90" rows="4" style="resize: none;"></textarea> <br>
                             <button class="btn btn-warning" id="marcar" name="submit">Marcar Consulta</button>
                     </form>
                     </div>

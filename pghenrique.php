@@ -104,11 +104,11 @@ label {
                             <form action="calendario.php" method="POST">
                                 <div class="form-group">
                                     <label for="dateofbirth">Escolha uma data a ser reservada aos alunos.</label>
-                                    <input type="date" name="data-sel" id="dateofbirth" class="form-control p-4">
+                                    <input type="date" name="data-sel" id="dateofbirth" class="form-control p-4" onfocus="this.showPicker()" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="hora-cons">Escolha um horário a ser reservado aos alunos: </label>
-                                    <input id="hora-cons" type="time" name="hora-cons" step="2" class="form-control p-4">
+                                    <input id="hora-cons" type="time" name="hora-cons" step="1800" class="form-control p-4" required>
                                 </div>
 
                                

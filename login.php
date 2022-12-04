@@ -20,6 +20,7 @@ session_start();
             $_SESSION['senha'] = $senha;
             if($row['psicologo'] == 1){
                 header("Location: pghenrique.php");
+                
                 print_r($resultado);
             }else{    
                 header('Location: pgalunos.php');
