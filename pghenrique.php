@@ -1,4 +1,5 @@
 <?php
+    include_once("conexao.php");
     session_start();
     if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
         unset($_SESSION['email']);
@@ -12,6 +13,22 @@
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
         header('Location: Telalogin.php');
+    }
+    
+
+    $sql = "SELECT id_usuario, data_disponivel, data_disponibilizada FROM datas";
+    $result = $connect->query($sql);
+
+    if ($result->num_rows > 0) {
+    echo "<table><tr><th>ID</th><th>Name</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["id_usuario"]."</td><td>".$row["data_disponivel"]." ".$row["data_disponibilizada"]."</td></tr>";
+        echo ($row['data_disponivel']?"1  foi ativo": "0 foi ativo". "<br>");
+    }
+    echo "</table>";
+    } else {
+    echo "0 results";
     }
 ?>
 <!DOCTYPE html>

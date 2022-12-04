@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="container-fluid p-0 bg-image" style="background-image: url('fundologin.jpg');
+    <div class="container-fluid p-0 bg-image" style="background-image: url('./img/fundologin.jpg');
     height: 100vh">>
         <div class="container justify-content-center">
             <div class="p-3">

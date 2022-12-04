@@ -22,7 +22,7 @@
         }else{
             $id_aluno = ($row['id']);
         }
-    $result_events = "SELECT id, data_disponibilizada, cor, mensagem FROM datas";
+    $result_events = "SELECT id, data_disponibilizada, data_disponivel FROM datas";
     $resultado_events = mysqli_query($connect, $result_events);
 ?>
 <!DOCTYPE html>
@@ -94,11 +94,13 @@
 							while($row_events = mysqli_fetch_array($resultado_events)){
 								?>
 								{
+                                    //condição ? codigoUm : codigoDois;
+
 								id: '<?php echo $row_events['id']; ?>',
-								title: '<?php echo $row_events['mensagem'];?>',
+								title: '<?php echo $row_events['data_disponivel']?"Horário Disponível": "Horário Ocupado";?>',
 								start: '<?php echo $row_events['data_disponibilizada']; ?>',
 								end: '<?php echo $row_events['data_disponibilizada']; ?>',
-								color: '<?php echo $row_events['cor']; ?>',
+								color: '<?php echo $row_events['data_disponivel']?"#007bff": "gray"; ?>',
 								},<?php
 							}
 						?>
@@ -132,7 +134,7 @@
                                 <input type="hidden" name="id_aluno" id="id_aluno">
                             </dl>
                             <label for="msg_aluno">Digite uma mensagem para o Psicólogo:</label>
-                            <textarea name="msg_alunos" id="msg_alunos" cols="90" rows="4" style="resize: none;"></textarea> <br>
+                            <textarea name="msg_alunos" id="msg_alunos" cols="90" rows="4" style="resize: none; width: 90%;"></textarea> <br>
                             <button class="btn btn-warning" id="marcar" name="submit">Marcar Consulta</button>
                     </form>
                     </div>
