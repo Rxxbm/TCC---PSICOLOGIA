@@ -16,20 +16,20 @@
     }
     
 
-    $sql = "SELECT id_usuario, data_disponivel, data_disponibilizada FROM datas";
+    $sql = "SELECT id_usuario, id, data_disponivel, data_disponibilizada, msg_alunos FROM datas ORDER BY data_disponibilizada";
     $result = $connect->query($sql);
 
-    if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Name</th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["id_usuario"]."</td><td>".$row["data_disponivel"]." ".$row["data_disponibilizada"]."</td></tr>";
-        echo ($row['data_disponivel']?"1  foi ativo": "0 foi ativo". "<br>");
-    }
-    echo "</table>";
-    } else {
-    echo "0 results";
-    }
+    // if ($result->num_rows > 0) {
+    // echo "<table><tr><th>ID</th><th>Name</th></tr>";
+    // // output data of each row
+    // while($row = $result->fetch_assoc()) {
+    //     echo "<tr><td>".$row["id_usuario"]."</td><td>".$row["data_disponivel"]." ".$row["data_disponibilizada"]."</td></tr>";
+    //     echo ($row['data_disponivel']?"1  foi ativo": "0 foi ativo". "<br>");
+    // }
+    // echo "</table>";
+    // } else {
+    // echo "0 results";
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -74,29 +74,48 @@ label {
 }
 
     </style>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </head>
 <body>
         <!-- CABEÇALHO INICIO -->
         <div class="container-fluid position-relative nav-bar p-0">
-            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                    <a href="" class="navbar-brand">
-                        <h1 class="m-0 text-primary"><span class="text-dark">PSICOLOG</span>IA</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">Retornar ao Início</a>
-                            
-                        </div>
-                        <a href="pghenrique.php?sair=true" class='nav-item nav-link' style="color:red;">Sair</a>
-                        </div>
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">PSICOLOG</span>IA</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Início</a>
+                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
+                        <a href="pghenrique.php?sair=true" class="nav-item nav-link">SAIR</a>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
+    </div>
         <div class="container-fluid bg-registration py-5" style="  padding: 4em; font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -139,6 +158,57 @@ label {
             </div>
         </div>
     </div>
+    <hr>
+    <div>
+        <h3 style="text-align: center; margin-bottom: 60px ;">Painel de Agendamentos</h3>
+    </div>
+    <table class="table table-dark my-5" style=" width: 95vw; margin: auto; border-radius: 15px 15px 0px 0px;">
+  <thead>
+    <td>Aluno</td>
+    <td>Horário Agendado</td>
+    <td>Situação do Horário</td>
+    <td>Mensagem do Aluno</td>
+    <td>Ações</td>
+  </thead>
+  <tbody>
+    <?php
+    if ($result->num_rows > 0) {
+    
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $n = $row["id_usuario"];
+        if ($n != 0){
+            $sql2 = "SELECT nome FROM usuarios WHERE id='$n'";
+            $result2 = $connect->query($sql2);
+            $data = date('d/m/Y H:i', strtotime($row['data_disponibilizada']));
+            $sit = $row['data_disponivel']?"Não Agendado":"Agendado";
+            while($row1 = $result2->fetch_assoc()) {
+            $nome = !empty($row1["nome"])? $row1['nome']:"Vazio";
+  }
+        }else{
+            $data = date('d/m/Y H:i', strtotime($row['data_disponibilizada']));
+            $sit = $row['data_disponivel']?"Não Agendado":"Agendado";
+            $nome = "Vazio";
+        }
+        // echo "<tr> <th>". $row["id_usuario"] . "</th><td>".$row["data_disponibilizada"]."</td><td>".$row["data_disponivel"]?"Horário Disponível": "Horário Ocupado";."</td></tr>";
+        echo "<tr><td>".$nome."</td><td>".$data."</td>" . "<td>".$sit."</td><td>".$row["msg_alunos"]."</td>" ;
+        echo "<td>
+            <a class='btn btn-primary' href='delete.php?id=$row[id]'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-lg' viewBox='0 0 16 16'>
+  <path d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/>
+</svg>
+</a>
+        </td></tr>";
+    }
+    }
+    ?>
+    <!-- <tr>
+      <th scope="row">3</th>
+      <td colspan="2" class="table-active">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr> -->
+  </tbody>
+</table>
         <!-- Corpo da página -->
 </body>
 </html>

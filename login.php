@@ -6,7 +6,7 @@ session_start();
         
         $email = $_POST['email'];
         $senha = md5($_POST['senha']);
-
+        $nome = $_POST['nome'];
         $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
         
         $resultado = $connect->query($sql);
