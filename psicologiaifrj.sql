@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2022 às 23:24
+-- Tempo de geração: 13-Dez-2022 às 05:01
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 7.4.30
 
@@ -32,17 +32,10 @@ CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
   `data_disponibilizada` datetime NOT NULL,
   `data_disponibilizacao` datetime NOT NULL,
-  `cor` varchar(20) DEFAULT '#007bff',
-  `mensagem` varchar(30) DEFAULT 'Horario Disponível'
+  `id_usuario` int(11) NOT NULL,
+  `msg_alunos` varchar(200) NOT NULL,
+  `confirm` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `datas`
---
-
-INSERT INTO `datas` (`data_disponivel`, `id`, `data_disponibilizada`, `data_disponibilizacao`, `cor`, `mensagem`) VALUES
-(0, 13, '2022-12-10 12:00:00', '2022-12-03 18:17:55', 'gray', 'Horario Ocupado'),
-(0, 14, '2022-12-18 17:00:00', '2022-12-03 18:18:09', 'gray', 'Horario Ocupado');
 
 -- --------------------------------------------------------
 
@@ -64,8 +57,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nome`, `email`, `senha`, `matricula`, `id`, `psicologo`) VALUES
-('', 'rubemcorrea0@gmail.com', '202cb962ac59075b964b07152d234b70', '20220000', 1, 0),
-('Henrique', 'henrique@psicologo.com', 'fcc62e4b46054142a897b38b9025da4d', 'null', 2, 1);
+('Rubem Ignacio Corrêa Neto', 'rubemcorrea0@gmail.com', '202cb962ac59075b964b07152d234b70', '20220000', 1, 0),
+('Henrique', 'henrique@psicologo.com', 'fcc62e4b46054142a897b38b9025da4d', 'null', 2, 1),
+('Giovana Rodrigues Soares', 'giovanarodrigues207@gmail.com', '202cb962ac59075b964b07152d234b70', '2020123769', 3, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -91,13 +85,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
