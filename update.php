@@ -5,8 +5,7 @@
         $sql = "SELECT * FROM datas WHERE id='$id'";
         $res = $connect->query($sql);
         if($res->num_rows > 0){
-            
-            $sql2 = "UPDATE datas SET confirm = '1' WHERE id='$id'";
+            $sql2 = "DELETE FROM datas WHERE id='$id'";
             $res2 = $connect->query($sql2);
         }
     }

@@ -16,9 +16,36 @@
     }
     
 
-    $sql = "SELECT id_usuario, id, data_disponivel, data_disponibilizada, msg_alunos FROM datas ORDER BY data_disponibilizada";
+    $sql = "SELECT id_usuario, id, data_disponivel, data_disponibilizada, msg_alunos FROM datas WHERE confirm = '0' ORDER BY data_disponibilizada";
     $result = $connect->query($sql);
-
+    
+    $sql2 = "SELECT id_usuario, id, data_disponivel, data_disponibilizada, msg_alunos FROM datas WHERE confirm = '1' ORDER BY data_disponibilizada";
+    $result2 = $connect->query($sql2);
+    
+// if ($result2->num_rows > 0) {
+    
+//     // output data of each row
+//     while($row2 = $result2->fetch_assoc()) {
+//         $n = $row2["id_usuario"];
+//         if ($n != 0){
+//             $sql2 = "SELECT nome FROM usuarios WHERE id='$n'";
+//             $result3 = $connect->query($sql2);
+//             $data = date('d/m/Y H:i', strtotime($row2['data_disponibilizada']));
+//             $sit = 'Finalizado';
+//             while($row1 = $result3->fetch_assoc()) {
+//             $nome = !empty($row1["nome"])? $row1['nome']:"Vazio";
+//   }
+//         }else{
+//             $data = date('d/m/Y H:i', strtotime($row2['data_disponibilizada']));
+//             $sit = $row2['data_disponivel']?"Não Agendado":"Agendado";
+//             $nome = "Vazio";
+//         }
+//         // echo "<tr> <th>". $row["id_usuario"] . "</th><td>".$row["data_disponibilizada"]."</td><td>".$row["data_disponivel"]?"Horário Disponível": "Horário Ocupado";."</td></tr>";
+//         echo "<tr><td>".$nome."</td><td>".$data."</td>" . "<td>".$sit."</td><td>".$row2["msg_alunos"]."</td>" ;
+//         echo "</td></tr>";
+//     }
+//     }
+    
     // if ($result->num_rows > 0) {
     // echo "<table><tr><th>ID</th><th>Name</th></tr>";
     // // output data of each row
@@ -162,6 +189,7 @@ label {
     <div>
         <h3 style="text-align: center; margin-bottom: 60px ;">Painel de Agendamentos</h3>
     </div>
+    
     <table class="table table-dark my-5" style=" width: 95vw; margin: auto; border-radius: 15px 15px 0px 0px;">
   <thead>
     <td>Aluno</td>
@@ -198,6 +226,10 @@ label {
   <path d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/>
 </svg>
 </a>
+        <a class='btn btn-primary' href='update.php?id=$row[id]'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-octagon' viewBox='0 0 16 16'>
+  <path d='M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z'/>
+  <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/>
+</svg></a>
         </td></tr>";
     }
     }
@@ -210,5 +242,55 @@ label {
   </tbody>
 </table>
         <!-- Corpo da página -->
+        <hr>
+   <div>
+        <h3 style="text-align: center; margin-bottom: 60px ;">Consultas Concluídas</h3>
+    </div>
+    <table class="table table-dark my-5" style=" width: 95vw; margin: auto; border-radius: 15px 15px 0px 0px;">
+  <thead>
+    <td>Aluno</td>
+    <td>Horário Agendado</td>
+    <td>Situação do Horário</td>
+    <td>Mensagem do Aluno</td>
+    <td>Ações</td>
+  </thead>
+  <tbody>
+    <?php
+    if ($result2->num_rows > 0) {
+    
+    // output data of each row
+    while($row2 = $result2->fetch_assoc()) {
+        $n = $row2["id_usuario"];
+        if ($n != 0){
+            $sql2 = "SELECT nome FROM usuarios WHERE id='$n'";
+            $result3 = $connect->query($sql2);
+            $data = date('d/m/Y H:i', strtotime($row2['data_disponibilizada']));
+            $sit = 'Finalizado';
+            while($row1 = $result3->fetch_assoc()) {
+            $nome = !empty($row1["nome"])? $row1['nome']:"Vazio";
+  }
+        }else{
+            $data = date('d/m/Y H:i', strtotime($row2['data_disponibilizada']));
+            $sit = $row2['data_disponivel']?"Não Agendado":"Agendado";
+            $nome = "Vazio";
+        }
+        // echo "<tr> <th>". $row["id_usuario"] . "</th><td>".$row["data_disponibilizada"]."</td><td>".$row["data_disponivel"]?"Horário Disponível": "Horário Ocupado";."</td></tr>";
+        echo "<tr><td>".$nome."</td><td>".$data."</td>" . "<td>".$sit."</td><td>".$row2["msg_alunos"]."</td>" ;
+        echo "<td> 
+        <a class='btn btn-primary' href='update.php?id=$row2[id]'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-octagon' viewBox='0 0 16 16'>
+  <path d='M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z'/>
+  <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/>
+</svg></a> </td>
+        </tr>";
+    }
+    }
+    ?>
+    <!-- <tr>
+      <th scope="row">3</th>
+      <td colspan="2" class="table-active">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr> -->
+  </tbody>
+</table>
 </body>
 </html>
