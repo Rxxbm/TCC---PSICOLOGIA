@@ -60,21 +60,21 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
                 <p style="text-align: center;">Faça parte do sistema, realize seu cadastro.</p>
             </div>
             <div class="container d-flex flex-column justify-content-center">
-                <form action="cadastro.php" method="POST">
+                <form action="cadastro.php" method="POST" onsubmit="return validarSenha()">
                 <div class="text-center">
-                        <input type="text" placeholder="Nome:" class="form-control mx-auto" style="width: 40%;" name="nome">
+                        <input type="text" placeholder="Nome:" required class="form-control mx-auto" style="width: 40%;" name="nome">
                     </div>
                     <div class="text-center">
-                        <input type="email" placeholder="Email:" class="form-control mx-auto" style="width: 40%;" name="email">
+                        <input type="email" placeholder="Email:" required class="form-control mx-auto" style="width: 40%;" name="email">
                     </div>
                     <div class="text-center">
-                        <input type="password" placeholder="Senha:" class="form-control mx-auto" style="width: 40%;" name="senha">
+                        <input type="password" placeholder="Senha:" required class="form-control mx-auto" style="width: 40%;" name="senha">
                     </div>
                     <div class="text-center">
-                        <input type="password" placeholder="Confirme a sue senha:" class="form-control mx-auto" style="width: 40%;" name="senha2">
+                        <input type="password" placeholder="Confirme a sue senha:" required class="form-control mx-auto" style="width: 40%;" name="senha2">
                     </div>
                     <div class="text-center">
-                        <input type="text" placeholder="Digite o seu numero de matrícula:" class="form-control mx-auto" style="width: 40%;" name="matricula">
+                        <input type="text" placeholder="Digite o seu numero de matrícula:" required class="form-control mx-auto" style="width: 40%;" name="matricula">
                     </div>
                     <div class="text-center">
                         <input type="submit" name="submit">
@@ -91,5 +91,18 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
 
         </div>
     </div>
+    <script>
+    function validarSenha(){
+    var senha = document.getElementsByName("senha")[0].value;
+    var senha2 = document.getElementsByName("senha2")[0].value;
+    if (senha == senha2){
+        return true
+    }
+    else{ 
+        alert("SENHAS DIFERENTES")
+        return false
+    }
+}
+    </script>
 </body>
 </html>
