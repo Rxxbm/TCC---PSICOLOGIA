@@ -9876,7 +9876,10 @@ main.cards section.card .icon {
 }
 
 main.cards section.card img {
-  width: 100%;
+  width: 290px;
+  padding-right: 50%;
+  
+  
 }
 
 main.cards section.card h3 {
