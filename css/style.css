@@ -9613,38 +9613,37 @@ h6,
 }
 
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/CONTATO.png), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/trist.png'), no-repeat center center;
+  background-size: cover;
+}
+
+.page-header1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/CONTATO.png'), no-repeat center center;
   background-size: cover;
 }
 
 #Humor  {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/Humor.png), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/Humor.png'), no-repeat center center;
   background-size: cover;
 }
 
 #ansioso{
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/Ans.png), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/Ans.png'), no-repeat center center;
   background-size: cover;
 }
 #nervoso{
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/nerv.png), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/nerv.png'), no-repeat center center;
   background-size: cover;
 }
 #triste{
-  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/trist.png), no-repeat center center; */
-  background-image: url(../img/triste-banner);
-    background-repeat: no-repeat;
+  background-image: url('/img/trist.png');
+    /* background-repeat: no-repeat;
     background-size:100%;
-    bottom: 0;
     color: black;
-    left: 0;
     overflow: auto;
     padding: 3em;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 0;
-    background-size: cover;
+    background-size: cover; */
 
 }
 @media (min-width: 208px) {
@@ -9669,20 +9668,15 @@ h6,
 }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 600px) {
   #triste
 {
     background-image: url('../img/img600.jpg');
     background-repeat: no-repeat;
-    bottom: 0;
     color: black;
-    left: 0;
     overflow: auto;
     padding: 3em;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -9694,21 +9688,16 @@ h6,
 @media (min-width: 1200px) {
    #triste
 {
-    background-image: url('../img/img1000.jpg');
+    background-image: url('../img/trist.png');
     background-repeat: no-repeat;
-    bottom: 0;
     color: black;
-    left: 0;
     overflow: auto;
     padding: 3em;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
+    margin-bottom: 20%;
 
 }
 }
