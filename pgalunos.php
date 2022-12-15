@@ -35,7 +35,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página do aluno</title>
     <link href="css/style.css" rel="stylesheet">
-    
+    <script src="js/main.js"></script>
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
