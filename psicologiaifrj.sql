@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Dez-2022 às 05:01
+-- Tempo de geração: 16-Dez-2022 às 06:28
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 7.4.30
 
@@ -49,17 +49,21 @@ CREATE TABLE `usuarios` (
   `senha` varchar(40) NOT NULL,
   `matricula` varchar(70) NOT NULL,
   `id` int(11) NOT NULL,
-  `psicologo` tinyint(1) NOT NULL
+  `psicologo` tinyint(1) NOT NULL,
+  `permitido` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`nome`, `email`, `senha`, `matricula`, `id`, `psicologo`) VALUES
-('Rubem Ignacio Corrêa Neto', 'rubemcorrea0@gmail.com', '202cb962ac59075b964b07152d234b70', '20220000', 1, 0),
-('Henrique', 'henrique@psicologo.com', 'fcc62e4b46054142a897b38b9025da4d', 'null', 2, 1),
-('Giovana Rodrigues Soares', 'giovanarodrigues207@gmail.com', '202cb962ac59075b964b07152d234b70', '2020123769', 3, 0);
+INSERT INTO `usuarios` (`nome`, `email`, `senha`, `matricula`, `id`, `psicologo`, `permitido`) VALUES
+('Rubem Ignacio Corrêa Neto', 'rubemcorrea0@gmail.com', '202cb962ac59075b964b07152d234b70', '20220000', 1, 0, 1),
+('Henrique', 'henrique@psicologo.com', 'fcc62e4b46054142a897b38b9025da4d', 'null', 2, 1, 1),
+('Giovana Rodrigues Soares', 'giovanarodrigues207@gmail.com', '202cb962ac59075b964b07152d234b70', '2020123769', 3, 0, 1),
+('Robert da silva ribeiro', 'robert@gmail.com', '202cb962ac59075b964b07152d234b70', '2020123769', 8, 0, 1),
+('teste testando', 'teste@ifrj.com', '202cb962ac59075b964b07152d234b70', '202200005565443', 9, 0, 1),
+('as', 'a@email.com', '98f13708210194c475687be6106a3b84', '121212', 10, 0, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -85,13 +89,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
