@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Está se sentindo cansad(o/a)?</title>
     <link href="css/style.css" rel="stylesheet">
      <!-- Favicon -->
      <link href="img/favicon.ico" rel="icon">
@@ -25,7 +25,7 @@
 </head>
 <body>
         <!-- CABEÇALHO INICIO -->
-       <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
@@ -36,27 +36,48 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Início</a>
-                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
-                        <div class="nav-item dropdown">
+                        
+                        <a href="index.php" class="nav-item nav-link active">Início</a>
+                        <a href="emocoes.php" class="nav-item nav-link"> Como você está hoje?</a>
+                            <?php
+                        session_start();
+                        include_once('conexao.php');
+                                if ((isset($_SESSION['email']) == true) && (isset($_SESSION['senha']) == true) && (!empty($_SESSION['email'])) && (!empty($_SESSION['senha']))){
+                                 $email = $_SESSION['email'];
+                                $senha = ($_SESSION['senha']);
+                                $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
+                                
+                                $resultado = $connect->query($sql);
+                                $row = $resultado->fetch_assoc();
+                                 if($row['psicologo'] != 1){
+                                    echo"  <a href='pgalunos.php' class='nav-item nav-link'>Agendar Horário</a>";
+                                 }else{
+                                    echo"<a href='pghenrique.php' class='nav-item nav-link'>Cadastrar Horários</a>";
+                                 }
+                                 
+                                }else{
+                                    ?>
+                                    <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Conecte-se</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="Telalogin.php" class="dropdown-item">Login</a>
                                 <a href="cadastro.php" class="dropdown-item">Cadastro</a>
                             </div>
                         </div>
+                                <?php
+                                }
+                            ?> 
                         
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-  
          <!-- Header Start -->
-    <div class="container-fluid" id="ansioso">
+    <div class="container-fluid page-header" id="Humor">
         <div class="container">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                <h3 class="display-4 text-white text-uppercase">ANSIOSO</h3>
+                <h3 class="display-4 text-white text-uppercase">CANSADO</h3>
                 <div class="d-inline-flex text-white">
                     <p class="m-0 text-uppercase"><a class="text-white"> Olá, sinta-se à vontade.</a></p>
                 </div>
@@ -66,8 +87,7 @@
     <br>
     <br>
     <!-- Header End -->
-
-         <!--cards -->
+         <!--cards -->  
          <hr>
          <div>
              <h3 style="text-align: center; ">Painel de Suporte</h3>
@@ -82,15 +102,13 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Hollywood Sign on The Hill" />
                <div class="card-body">
-                 <h5 class="card-title text-center">A diferença entre medo, ansiedade e stress</h5>
+                 <h5 class="card-title text-center">Sono, Cansaço e Estudos: Como Lidar?</h5>
                  <p class="card-text" style="font-size: 14px;">
-                   A Ana Beatriz é uma psiquiatra renomada e escritora de diversos livros sobre a sua área.
-                   Nesse video ela expõe o que de fato vem a ser o medo, a ansiedade e o stress e qual a ligação 
-                   que possuem.
+                  "Sono é um dos piores obstáculos para os estudantes, sejam eles da área de concursos públicos ou não! No vídeo, eu falo sobre o que afeta a nossa energia para ter boa disposição e como eu contornava o cansaço durante a minha preparação." Coach Luís Eduardo.
                  </p>
                  <div class="d-flex justify-content-center align-items-end">
                      
-                     <a href="https://youtu.be/Nn1Zeac3LNA" target="external"><button type="button" class="btn btn-info btn-rounded align-bottom" style="vertical-align: bottom;">Info</button></a>
+                     <a href="https://youtu.be/kadq-L_ueIU" target="external"><button type="button" class="btn btn-info btn-rounded align-bottom" style="vertical-align: bottom;">Info</button></a>
                  </div>
                </div>
              </div>
@@ -100,12 +118,11 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Palm Springs Road" />
                <div class="card-body">
-                 <h5 class="card-title text-center">dicas para se planejar e reduzir a ansiedade, Controlando sua ansiedade • Casule Saúde e Bem-estar</h5>
-                 <p class="card-text">O planejamento semanal pode ser um grande aliado no manejo da Ansiedade diária. Nesse vídeo, é explicado de forma simples e clara como fazer um planejamento pessoal que pode te ajudar a ser mais produtivo e menos preocupado no seu dia a dia!
-                </p>
+                 <h5 class="card-title text-center">Cansaço ou preguiça?</h5>
+                 <p class="card-text">Como lidar com cansaço excessivo? Como acabar com a preguiça? E qual desses 2 você realmente tem?  </p>
                  <div class="d-flex justify-content-center align-items-end">
                      
-                     <a href="https://youtu.be/YCa_l5y3vUA"><button type="button" class="btn btn-info btn-rounded align-bottom">Info</button></a>
+                     <a href="https://youtu.be/JJ8oM2_OWPU"><button type="button" class="btn btn-info btn-rounded align-bottom">Info</button></a>
                  </div>
                </div>
              </div>
@@ -115,11 +132,10 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Los Angeles Skyscrapers" />
                <div class="card-body">
-                 <h5 class="card-title text-center">Como controlar uma crise de ansiedade</h5>
-                 <p class="card-text">Se as crises estão sendo repetidas, recorrentes, procure ajuda profissional. Quando não tratadas, elas podem piorar e ter impacto na qualidade de vida.
-                </p>
+                 <h5 class="card-title text-center">Pare de ficar sempre cansado</h5>
+                 <p class="card-text">O cansaço é um sintoma físico ou mental que está diretamente relacionado ao esforço realizado ao longo do dia. É aquela sensação de desconforto que você sente quando realiza uma atividade física muito intensa ou tem um dia muito corrido no trabalho. Por que você sempre se sente cansado?</p>
                    <div class="d-flex justify-content-center align-items-end">
-                       <a href="https://youtu.be/8YG8HABY25w"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
+                       <a href=""><button type="button" class="btn btn-info btn-rounded">Info</button></a>
                    </div>
                </div>
              </div>
@@ -131,11 +147,11 @@
                  alt="Skyscrapers" />
                <div class="card-body">
                  <h5 class="card-title text-center">Meditação</h5>
-                 <p class="card-text">Utilize essa meditação guiada para diminuir a ansiedade, tranquilizar sua mente e relaxar seu corpo.  A meditação pode trazer inúmeros benefícios para a sua saúde, desde que seja praticada com regularidade e constância.
-                   
+                 <p class="card-text">
+                  Utilize essa meditação para  relaxar profundamente, eliminar o cansaço e aumentar a sua disposição.
                  </p>
                  <div class="d-flex justify-content-center align-items-end">
-                       <a href="https://youtu.be/6mM8tZg0t4w"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
+                       <a href="https://youtu.be/0DRnNdGWVQk"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
                    </div>
                </div>
              </div>
@@ -196,4 +212,4 @@
          <script src="js/main.js"></script>
      </body>
      
-     </html>
+     </html>        

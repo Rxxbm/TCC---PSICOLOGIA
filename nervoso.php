@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Está se sentindo nervos(o/a)?</title>
     <link href="css/style.css" rel="stylesheet">
      <!-- Favicon -->
      <link href="img/favicon.ico" rel="icon">
@@ -25,7 +25,7 @@
 </head>
 <body>
         <!-- CABEÇALHO INICIO -->
-         <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
@@ -36,27 +36,48 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Início</a>
-                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
-                        <div class="nav-item dropdown">
+                        
+                        <a href="index.php" class="nav-item nav-link active">Início</a>
+                        <a href="emocoes.php" class="nav-item nav-link"> Como você está hoje?</a>
+                            <?php
+                        session_start();
+                        include_once('conexao.php');
+                                if ((isset($_SESSION['email']) == true) && (isset($_SESSION['senha']) == true) && (!empty($_SESSION['email'])) && (!empty($_SESSION['senha']))){
+                                 $email = $_SESSION['email'];
+                                $senha = ($_SESSION['senha']);
+                                $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
+                                
+                                $resultado = $connect->query($sql);
+                                $row = $resultado->fetch_assoc();
+                                 if($row['psicologo'] != 1){
+                                    echo"  <a href='pgalunos.php' class='nav-item nav-link'>Agendar Horário</a>";
+                                 }else{
+                                    echo"<a href='pghenrique.php' class='nav-item nav-link'>Cadastrar Horários</a>";
+                                 }
+                                 
+                                }else{
+                                    ?>
+                                    <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Conecte-se</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="Telalogin.php" class="dropdown-item">Login</a>
                                 <a href="cadastro.php" class="dropdown-item">Cadastro</a>
                             </div>
                         </div>
+                                <?php
+                                }
+                            ?> 
                         
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-  
-         <!-- Header Start -->
-    <div class="container-fluid page-header" id="sozinho">
+    <!-- Header Start -->
+    <div class="container-fluid page-header" id="nervoso">
         <div class="container">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                <h3 class="display-4 text-white text-uppercase">SOZINHO</h3>
+                <h3 class="display-4 text-white text-uppercase">NERVOSO</h3>
                 <div class="d-inline-flex text-white">
                     <p class="m-0 text-uppercase"><a class="text-white"> Olá, sinta-se à vontade.</a></p>
                 </div>
@@ -67,7 +88,8 @@
     <br>
     <!-- Header End -->
          <!--cards -->
-     
+       
+       
          <hr>
          <div>
              <h3 style="text-align: center; ">Painel de Suporte</h3>
@@ -82,15 +104,14 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Hollywood Sign on The Hill" />
                <div class="card-body">
-                 <h5 class="card-title text-center">solidão em tempos de pandemia</h5>
+                 <h5 class="card-title text-center">Como controlar a ANSIEDADE e o NERVOSISMO</h5>
                  <p class="card-text" style="font-size: 14px;">
-                  o que é solidão? <br>
-                  o que é solitude? <br>
-                  como o autoconhecimento pode te ajudar?
+                   Os sintomas do nervosismo e da ansiedade são muitos, por assim dizer, como por exemplo; falar em público, ansiedade alimentar, problemas de saúde mental, respiração acelerada, suar frio, expectativa, stress, ansiedade, depressão, dentre outros. O nervosismo quando não controlado pode trazer muitos problemas, afetando até a saúde mental, por isso é importantíssimo que você saiba como ficar calmo nestes momentos. 
+                         
                  </p>
                  <div class="d-flex justify-content-center align-items-end">
                      
-                     <a href="https://youtu.be/SRS3rang8RA" target="external"><button type="button" class="btn btn-info btn-rounded align-bottom" style="vertical-align: bottom;">Info</button></a>
+                     <a href="https://youtu.be/NkfLutybfWE" target="external"><button type="button" class="btn btn-info btn-rounded align-bottom" style="vertical-align: bottom;">Info</button></a>
                  </div>
                </div>
              </div>
@@ -100,16 +121,11 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Palm Springs Road" />
                <div class="card-body">
-                 <h5 class="card-title text-center">O pazer da solitude</h5>
-                 <p class="card-text">benefícios da prática da solitude;<br>
-                    Qual o papel da solitude?<br>
-                    Consequências de não ter solitude;<br>
-                O homem no meio social. Será mesmo que é necessário se afastar definitivamente de tudo e todos?<br>
-
-            </p>
+                 <h5 class="card-title text-center">O que significa "ser muito nervoso" ou "sofrer dos nervos"?</h5>
+                 <p class="card-text">Termos populares podem ser muito abrangentes, vamos discutir um pouco sobre a que as pessoas podem estar se referindo quando dizem que alguem é muito nervoso ou que sofre dos nervos.</p>
                  <div class="d-flex justify-content-center align-items-end">
                      
-                     <a href="https://youtu.be/H46k2DCrPKw"><button type="button" class="btn btn-info btn-rounded align-bottom">Info</button></a>
+                     <a href="https://youtu.be/Cape51DkaDY"><button type="button" class="btn btn-info btn-rounded align-bottom">Info</button></a>
                  </div>
                </div>
              </div>
@@ -119,10 +135,10 @@
                <img src="img/img600.jpg" class="card-img-top"
                  alt="Los Angeles Skyscrapers" />
                <div class="card-body">
-                 <h5 class="card-title text-center">quando se sentir sozinho...</h5>
-                 <p class="card-text">Você se sente sozinho(a)?<br> Está sempre com sentimento de solidão?<br> Então, vamos conversar sobre como lidar com esse sentimento solitário.</p>
+                 <h5 class="card-title text-center">O nervosismo e os chás</h5>
+                 <p class="card-text">O uso de chás é algo milenar em inúmeras culturas. Pesquisas recentes mostram que seu uso é muito benéfico nas mais diversas áreas da saúde, incluindo na SAÚDE DA MENTE. Hoje vamos conhecer alguns chás que podem ajudar a diminuir o estresse no seu dia a dia.</p>
                    <div class="d-flex justify-content-center align-items-end">
-                       <a href="https://youtu.be/UiFs_kpPnMs"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
+                       <a href="https://youtu.be/NdiZk6Lu800"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
                    </div>
                </div>
              </div>
@@ -135,10 +151,10 @@
                <div class="card-body">
                  <h5 class="card-title text-center">Meditação</h5>
                  <p class="card-text">
-                    Utilize essa meditação guiada para vencer suas carências e a sensação de solidão.<br> Para obter melhores resultados medite diariamente.
+                  Utilize essa meditação para acalmar a tua mente em momentos de ansiedade e estresse, impactando positivamente a sua saúde física e emocional. Para obter melhores resultados medite diariamente.
                  </p>
                  <div class="d-flex justify-content-center align-items-end">
-                       <a href="https://youtu.be/XfmUlzDejKU"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
+                       <a href="https://youtu.be/oR_YBAjeP1A"><button type="button" class="btn btn-info btn-rounded">Info</button></a>
                    </div>
                </div>
              </div>

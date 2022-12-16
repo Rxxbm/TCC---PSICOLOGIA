@@ -13,7 +13,7 @@
         unset($_SESSION['senha']);
         header('Location: Telalogin.php');
     } 
-    $sql = "SELECT id, nome FROM usuarios WHERE email = '$logado' and senha = '$senha'";
+    $sql = "SELECT id, nome, permitido FROM usuarios WHERE email = '$logado' and senha = '$senha'";
     
         $resultado = $connect->query($sql);
         $row = $resultado->fetch_assoc();
@@ -21,10 +21,13 @@
             print_r($resultado);
         }else{
             $id_aluno = ($row['id']);
+            $permitido = $row['permitido'];
         }
     $result_events = "SELECT id, data_disponibilizada, data_disponivel, id_usuario FROM datas";
-    $q = "SELECT id, data_disponibilizada, data_disponivel, msg_alunos FROM datas WHERE id_usuario='$id_aluno'";
+    $q = "SELECT id, data_disponibilizada, data_disponivel, msg_alunos, confirm FROM datas WHERE id_usuario='$id_aluno'";
+    
     $result = $connect->query($q);
+    
     $resultado_events = mysqli_query($connect, $result_events);
 ?>
 <!DOCTYPE html>
@@ -169,8 +172,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Início</a>
-                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
+                        <a href="index.php" class="nav-item nav-link active">Início</a>
+                        <a href="emocoes.php" class="nav-item nav-link"> Como você está hoje?</a>
                         <a href="pgalunos.php?sair=true" class="nav-item nav-link">SAIR</a>
                     </div>
                 </div>
@@ -189,37 +192,57 @@
             </div>
         </div>
     </div>
-<div class="container py-5">
+</div>
+   <?php
+    if (($result->num_rows > 0) && ($permitido == 0)) {
+        ?>
+        <div class="container py-5">
     <div class="text-center mb-3 pb-3">
         <h1 class='my-3'> <?php echo "Olá, " . $row['nome'];?> </h1>
-        <h6 class="text-uppercase my-3" style="letter-spacing: 5px; color: gray;">TODAS AS INFORMAÇÕES COLOCADAS FICARÂO RESTRITAS À VISUALIZAÇÃO DO PSICÓLOGO.</h6>
-        <h2>HORÁRIOS DISPONÍVEIS AQUI!</h2>
+        <h6 class="text-uppercase" style="letter-spacing: 5px; color: gray;">TODAS AS INFORMAÇÕES COLOCADAS FICARÂO RESTRITAS À VISUALIZAÇÃO DO PSICÓLOGO.</h6>
+        <h2>HORÁRIO AGENDADO!</h2>
     </div>
 </div>
-<div id='calendar' style="max-width: 50%; margin: auto; margin-top: -30px;"></div>
-</div>
-<table class="table table-dark my-5" style=" width: 95vw; margin: auto; border-radius: 15px 15px 0px 0px;">
+        <h3 style="text-align: center;">Central de Atendimentos</h3>
+        <table class="table table-dark my-5" style=" ;margin-top: -400px;width: 95vw; margin: auto; border-radius: 15px 15px 0px 0px;">
   <thead>
     <td>Horário Agendado</td>
     <td>Mensagem</td>
+    <td>Situação</td>
     <td>Ações</td>
+    
   </thead>
   <tbody>
-    <?php
-    if ($result->num_rows > 0) {
+ 
+        <?php
     while($row3 = $result->fetch_assoc()) {
         $data = date('d/m/Y H:i', strtotime($row3['data_disponibilizada']));
         echo "<tr><td>".$data."</td>" . "<td>".$row3['msg_alunos']."</td>" ;
+        echo $row3['confirm']?"<td>Atendimento Finalizado</td>":"<td>Em Andamento</td>";
         echo "<td>
             <a class='btn btn-primary text-dark' href='desmarcar.php?id=$row3[id]'>
         Cancelar Agendamento
 </a>
         </td></tr>";
     }
+    ?>
+     </tbody>
+</table>
+    <?php
+    }else{
+        ?>
+        <div class="container py-5">
+    <div class="text-center mb-3 pb-3">
+        <h1 class='my-3'> <?php echo "Olá, " . $row['nome'];?> </h1>
+        <h6 class="text-uppercase my-3" style="letter-spacing: 5px; color: gray;">TODAS AS INFORMAÇÕES COLOCADAS FICARÂO RESTRITAS À VISUALIZAÇÃO DO PSICÓLOGO.</h6>
+        <h2>HORÁRIOS DISPONÍVEIS AQUI!</h2>
+    </div>
+</div>
+         <div id='calendar' style="max-width: 50%; margin: auto; margin-top: -30px;"></div>
+        <?php
     }
     ?>
 
-  </tbody>
-</table>
+
 </body>
 </html>

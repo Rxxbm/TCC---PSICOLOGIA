@@ -48,8 +48,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Início</a>
-                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
+                        <a href="index.php" class="nav-item nav-link active">Início</a>
+                        <a href="emocoes.php" class="nav-item nav-link">Como você está hoje?</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Conecte-se</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
@@ -65,7 +65,7 @@
     </div>
   
     <div class="container-fluid p-0 bg-image" style="background-image: url('./img/fundologin.jpg');
-    height: 100vh">>
+    height: 100vh">
         <div class="container justify-content-center">
             <div class="p-3">
                 <h1 class="text-center text-dark-50" style="font-size: 4rem;">Login</h1>

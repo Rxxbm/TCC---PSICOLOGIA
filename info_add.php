@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Informações Adicionais!</title>
     <link href="css/style.css" rel="stylesheet">
        <!-- Favicon -->
        <link href="img/favicon.ico" rel="icon">
@@ -25,7 +25,7 @@
 </head>
 <body>
         <!-- CABEÇALHO INICIO -->
-         <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
@@ -36,22 +36,43 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Início</a>
-                        <a href="service.html" class="nav-item nav-link"> Como você está hoje?</a>
-                        <div class="nav-item dropdown">
+                        
+                        <a href="index.php" class="nav-item nav-link active">Início</a>
+                        <a href="emocoes.php" class="nav-item nav-link"> Como você está hoje?</a>
+                            <?php
+                        session_start();
+                        include_once('conexao.php');
+                                if ((isset($_SESSION['email']) == true) && (isset($_SESSION['senha']) == true) && (!empty($_SESSION['email'])) && (!empty($_SESSION['senha']))){
+                                 $email = $_SESSION['email'];
+                                $senha = ($_SESSION['senha']);
+                                $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
+                                
+                                $resultado = $connect->query($sql);
+                                $row = $resultado->fetch_assoc();
+                                 if($row['psicologo'] != 1){
+                                    echo"  <a href='pgalunos.php' class='nav-item nav-link'>Agendar Horário</a>";
+                                 }else{
+                                    echo"<a href='pghenrique.php' class='nav-item nav-link'>Cadastrar Horários</a>";
+                                 }
+                                 
+                                }else{
+                                    ?>
+                                    <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Conecte-se</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="Telalogin.php" class="dropdown-item">Login</a>
                                 <a href="cadastro.php" class="dropdown-item">Cadastro</a>
                             </div>
                         </div>
+                                <?php
+                                }
+                            ?> 
                         
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-  
          <!-- Header Start -->
     <div class="container-fluid page-header" id="infadd" >
         <div class="container">
