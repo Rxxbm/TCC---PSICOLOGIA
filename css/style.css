@@ -3484,7 +3484,6 @@ input[type="button"].btn-block {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
-  color-adjust: exact;
 }
 
 .custom-control-inline {
@@ -6173,8 +6172,53 @@ button.bg-dark:focus {
   background-color: #080808 !important;
 }
 
+fa fa-2x fa-route mx-auto mb-4::before{
+  color: var(--blue);
+}
+
+
+#red{
+  background-color: red;
+  padding: 0%;
+  
+}
+
+#orange{
+  background-color: orangered;
+  padding: 0%;
+ 
+}
+
+#yellow{
+  background-color: orange;
+  padding: 0%;
+  
+}
+
+#blue{
+  background-color: var(--blue);
+  padding: 0%;
+  
+  
+}
+
+#marine{
+  background-color: blue;
+  padding: 0%;
+  
+  
+}
+
+#gray{
+  background-color: gray;
+  padding: 0%;
+  
+  
+}
+
+
 .bg-white {
-  background-color: #fff !important;
+  background-color:  white !important;
 }
 
 .bg-transparent {
@@ -9569,9 +9613,107 @@ h6,
 }
 
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/carousel-2.jpg), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/trist.png'), no-repeat center center;
   background-size: cover;
 }
+
+.page-header1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/CONTATO.png'), no-repeat center center;
+  background-size: cover;
+}
+
+#Humor  {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/Humor.png'), no-repeat center center;
+  background-size: cover;
+}
+
+#ansioso{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/Ans.png'), no-repeat center center;
+  background-size: cover;
+}
+#nervoso{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/nerv.png'), no-repeat center center;
+  background-size: cover;
+}
+#triste{
+  background-image: url('/img/trist.png');
+    /* background-repeat: no-repeat;
+    background-size:100%;
+    color: black;
+    overflow: auto;
+    padding: 3em;
+    text-align: center;
+    background-size: cover; */
+
+}
+@media (min-width: 208px) {
+    #triste
+{
+    background-image: url('../img/img200.jpg');
+    background-repeat: no-repeat;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+
+}
+}
+
+@media (min-width: 600px) {
+  #triste
+{
+    background-image: url('../img/img600.jpg');
+    background-repeat: no-repeat;
+    color: black;
+    overflow: auto;
+    padding: 3em;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+
+}
+}
+
+@media (min-width: 1200px) {
+   #triste
+{
+    background-image: url('../img/trist.png');
+    background-repeat: no-repeat;
+    color: black;
+    overflow: auto;
+    padding: 3em;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20%;
+
+}
+}
+#sozinho{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/sozi.png), no-repeat center center;
+  background-size: cover;
+}
+#infadd{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/infadd.png), no-repeat center center;
+  background-size: cover;
+}
+
+
+
+
+
 
 .destination-item img {
   transition: .5s;
@@ -9754,8 +9896,8 @@ h6,
 .blog-date::after {
   position: absolute;
   content: "";
-  width: 0;
-  height: 0;
+  width: 0px;
+  height: 0px;
   top: -15px;
   left: 0;
   border: 8px solid;
@@ -9767,4 +9909,106 @@ h6,
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+main.cards {
+  
+  display: flex;
+    padding: 12px;
+    margin-top: 0%;
+    align-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+main.cards section.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  max-height: 468px;
+  margin-left: 32px;
+}
+
+main.cards section.card:first-child {
+  margin-left: 0;
+}
+
+main.cards section.card .icon {
+  width: 164px;
+  height: 200px;
+}
+
+main.cards section.card img {
+  width: 290px;
+  padding-right: 50%;
+  
+  
+}
+
+main.cards section.card h3 {
+  font-size: 100%;
+  margin: 16px 0;
+}
+
+main.cards section.card span {
+  font-weight: 300;
+  max-width: 240px;
+  font-size: 80%;
+  margin-bottom: 16px;
+}
+
+main.cards section.card button {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  border-radius: 32px;
+  border: 0;
+  cursor: pointer;
+  font-size: 80%;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 16px 0;
+}
+
+main.cards section.card.contact button {
+  background: linear-gradient(to right, #9F66FF, #DFCBFF);
+}
+main.cards section.card.shop button {
+  background: linear-gradient(to right, #3E8AFF, #BBDEFF);
+}
+main.cards section.card.about button {
+  background: linear-gradient(to right, #FE5F8F, #FFC7D9);
+}
+
+main.cards section.card.contact {
+  box-shadow: 20px 20px 50px -30px #DBC4FF;
+}
+main.cards section.card.shop {
+  box-shadow: 20px 20px 50px -30px #AFD6FF;
+}
+main.cards section.card.about {
+  box-shadow: 20px 20px 50px -30px #FFC1D5;
+}
+
+@media screen and (max-width: 720px) {
+  main.cards {
+      flex-direction: column;
+  }
+
+  main.cards section.card {
+      margin-left: 0;
+      margin-bottom: 32px;
+  }
+
+  main.cards section.card:last-child {
+      margin-bottom: 0;
+  }
+
+  main.cards section.card button {
+      font-size: 70%;
+  }
+
 }
